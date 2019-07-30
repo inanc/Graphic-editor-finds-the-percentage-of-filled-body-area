@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+    <meta content="IE=edge" http-equiv="X-UA-Compatible">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <!-- Bootstrap core CSS -->
+    <link href="https://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <script src="https://use.fontawesome.com/46af14eb3c.js"></script>
+
+    <!-- Google fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Geostar+Fill" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="css/all.css" rel="stylesheet">
+    <link href="css/advanced.css" rel="stylesheet">
+
+</head>
+<body>
+<div class="container">
+    <div class="starter-template">
+        <p class="lead">Try on: <a href="https://codepen.io/inanccakil/pen/JgWgxm" target="_blank"><i
+                class="fa fa-codepen"></i> https://codepen.io/inanccakil/pen/JgWgxm</a></p>
+            <output></output>
+
+
+    </div>
+    <div class="row">
+        <div class="col-md-3">
+            <!-- tools -->
+            <div class="toolbar" id="tools">
+                <div class="section files">
+                    <div class="button" id="reset"><i class="fa fa-trash-o"></i></div>
+                    <div class="button" id="tool-calculate"><i class="fa fa-calculator"></i></div>
+                </div>
+                <div class="section drawing">
+                    <div class="button active" id="tool-pen"><i class="fa fa-pencil"></i></div>
+                    <div class="button" id="tool-highlighter"><i class="fa fa-paint-brush"></i></div>
+                    <div class="button rainbow" id="tool-rainbow"><i class="fa fa-magic"></i></div>
+                    <div class="button mandala" id="tool-mandala"><i class="fa fa-snowflake-o"></i></div>
+                </div>
+                <div class="section drawing">
+                    <div class="button line" id="tool-line">╱</div>
+                    <div class="button rectangle" id="tool-rectangle"><i class="fa fa-square-o"></i></div>
+                    <div class="button circle" id="tool-circle"><i class="fa fa-circle-thin"></i></div>
+                    <div class="button font" id="tool-type"><i class="fa fa-font"></i></div>
+                </div>
+                <div class="section rubber">
+                    <div class="button" id="tool-eraser"><i class="fa fa-eraser"></i></div>
+                    <div class="button" id="tool-cutout"><i class="fa fa-scissors"></i></div>
+                </div>
+                <div class="section special">
+                    <div class="button rotate-viewport" id="tool-rotate-viewport"><i class="fa fa-circle-o-notch"></i>
+                    </div>
+                    <div class="button move-viewport" id="tool-move-viewport"><i class="fa fa-hand-paper-o"></i></div>
+                </div>
+                <div class="section special">
+                    <div class="button" id="tool-zoom-out"><i class="fa fa-search-minus"></i></div>
+                    <div class="button" id="tool-zoom-1"><i class="fa fa-home"></i></div>
+                    <div class="button" id="tool-zoom-in"><i class="fa fa-search-plus"></i></div>
+                </div>
+                <div class="section special">
+                    <div class="button undo" id="tool-undo"><i class="fa fa-backward"></i></div>
+                    <div class="button redo" id="tool-redo"><i class="fa fa-forward"></i></div>
+                </div>
+                <hr style="clear:both"/>
+                <div class="section special">
+                    <span id="toolName">Tool name</span>
+                </div>
+                <div class="section size" id="size">
+                    <input class="slider" id="size-slider" max="20" min="1" step="1" type="range" value="1"/>
+                </div>
+
+                <div class="section colorpicker" id="colorpaletteSection">
+                    <div class="colorpalette" id="colorpalette"></div>
+                </div>
+                <div class="section colorpicker" id="colorpaletteFillSection">
+                    <div class="colorpalette" id="colorpaletteFill"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9">
+            <div id="sketchpad">
+            </div>
+        </div>
+        <div class="col-md-12 ">
+            <div id="drawCanvas"></div>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
+
+<!-- Bootstrap core JavaScript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="https://v4-alpha.getbootstrap.com/assets/js/vendor/jquery.min.js"><\/script>')</script>
+<script src="https://v4-alpha.getbootstrap.com/dist/js/bootstrap.min.js"></script>
+<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+<script src="https://v4-alpha.getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+
+
+<!-- Sketchpad -->
+<script src="https://cdn.sketchpad.pro/dist/current/sketchpad.min.js"></script>
+<script src="js/misc.js"></script>
+<script src="js/advanced.js"></script>
+<link href="../css/style.css" rel="stylesheet">
+<script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+
+
+</body>
+</html>
