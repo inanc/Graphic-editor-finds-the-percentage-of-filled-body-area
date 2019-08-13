@@ -5,7 +5,8 @@
     <meta content="IE=edge" http-equiv="X-UA-Compatible">
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
     <!-- Bootstrap core CSS -->
-    <link href="https://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
 
     <!-- Font Awesome -->
     <script src="https://use.fontawesome.com/46af14eb3c.js"></script>
@@ -14,29 +15,66 @@
     <link href="https://fonts.googleapis.com/css?family=Geostar+Fill" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="css/all.css" rel="stylesheet">
     <link href="css/advanced.css" rel="stylesheet">
 
 </head>
 <body>
 <div class="container">
-    <div class="starter-template">
-        <p class="lead">Try on: <a href="https://codepen.io/inanccakil/pen/JgWgxm" target="_blank"><i
-                class="fa fa-codepen"></i> https://codepen.io/inanccakil/pen/JgWgxm</a></p>
-            <output></output>
-
-
+    <div class="starter-template"><p>
+        <p class="lead">Try on: <a href="https://codepen.io/inanccakil/pen/zYOrZaa" target="_blank"><i
+                class="fa fa-codepen"></i> https://codepen.io/inanccakil/pen/zYOrZaa</a></p>
+        <span id="frontOutput"></span>
+        <input hidden id="frontOutputInput" type="text" value="0">
+        <span id="backOutput"></span>
+        <input hidden id="backOutputInput" type="text" value="0">
+        <span id="bodySum"></span></p>
+        <p>
+            <span id="frontHandOutput"></span>
+            <input hidden id="frontHandOutputInput" type="text" value="0">
+            <span id="backHandOutput"></span>
+            <input hidden id="backHandOutputInput" type="text" value="0">
+            <span id="handSum"></span></p>
+        <span id="leftHeadOutput"></span>
+        <input hidden id="leftHeadOutputInput" type="text" value="0">
+        <span id="rightHeadOutput"></span>
+        <input hidden id="rightHeadOutputInput" type="text" value="0">
+        <span id="rightHeadSum"></span>
     </div>
     <div class="row">
-        <div class="col-md-3">
+        <div class="col-md-5 ">
+            <select class="custom-select mb-2" id="selectGender">
+                <option selected value="Man"> Man</option>
+                <option value="Woman">Woman</option>
+                <option value="Kid">Kid</option>
+            </select>
+            <div class="switch-body">
+                <input checked id="frontBody" name="switch-body" type="radio" value="frontBody"/>
+                <label for="frontBody">Front Body</label>
+                <input id="backBody" name="switch-body" type="radio" value="backBody"/>
+                <label for="backBody">Back Body</label>
+                <input id="frontHand" name="switch-body" type="radio" value="frontHand"/>
+                <label for="frontHand">Front Hand</label>
+                <input id="backHand" name="switch-body" type="radio" value="backHand"/>
+                <label for="backHand">Back Hand</label>
+                <input id="leftHead" name="switch-body" type="radio" value="leftHead"/>
+                <label for="leftHead">Left Head</label>
+                <input id="rightHead" name="switch-body" type="radio" value="rightHead"/>
+                <label for="rightHead">Right Head</label>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-3 ">
             <!-- tools -->
             <div class="toolbar" id="tools">
                 <div class="section files">
                     <div class="button" id="reset"><i class="fa fa-trash-o"></i></div>
                     <div class="button" id="tool-calculate"><i class="fa fa-calculator"></i></div>
+                    <div class="button active" id="tool-pen"><i class="fa fa-pencil"></i></div>
+                    <div class="button" id="tool-color1"><i class="fa fa-pencil-square-o"></i></div>
+                    <div class="button" id="tool-color2"><i class="fa fa-pencil-square"></i></div>
                 </div>
                 <div class="section drawing">
-                    <div class="button active" id="tool-pen"><i class="fa fa-pencil"></i></div>
                     <div class="button" id="tool-highlighter"><i class="fa fa-paint-brush"></i></div>
                     <div class="button rainbow" id="tool-rainbow"><i class="fa fa-magic"></i></div>
                     <div class="button mandala" id="tool-mandala"><i class="fa fa-snowflake-o"></i></div>
@@ -60,6 +98,7 @@
                     <div class="button" id="tool-zoom-out"><i class="fa fa-search-minus"></i></div>
                     <div class="button" id="tool-zoom-1"><i class="fa fa-home"></i></div>
                     <div class="button" id="tool-zoom-in"><i class="fa fa-search-plus"></i></div>
+                    <div class="button" id="tool-save"><i class="fa fa-save"></i></div>
                 </div>
                 <div class="section special">
                     <div class="button undo" id="tool-undo"><i class="fa fa-backward"></i></div>
@@ -81,10 +120,31 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-9">
-            <div id="sketchpad">
+        <div class="col-md-7">
+            <div class="sketchpadHide" id="frontBodySketchpad">
             </div>
         </div>
+        <div class="col-md-7">
+            <div class="sketchpadHide" id="backBodySketchpad">
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="sketchpadHide" id="frontHandSketchpad">
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="sketchpadHide" id="backHandSketchpad">
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="sketchpadHide" id="leftHeadSketchpad">
+            </div>
+        </div>
+        <div class="col-md-7">
+            <div class="sketchpadHide" id="rightHeadSketchpad">
+            </div>
+        </div>
+
         <div class="col-md-12 ">
             <div id="drawCanvas"></div>
         </div>
@@ -92,23 +152,25 @@
 
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.4.1/dist/jquery.min.js"></script>
 
 <!-- Bootstrap core JavaScript
 ================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="https://v4-alpha.getbootstrap.com/assets/js/vendor/jquery.min.js"><\/script>')</script>
-<script src="https://v4-alpha.getbootstrap.com/dist/js/bootstrap.min.js"></script>
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="https://v4-alpha.getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script crossorigin="anonymous"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
 
 <!-- Sketchpad -->
 <script src="https://cdn.sketchpad.pro/dist/current/sketchpad.min.js"></script>
 <script src="js/misc.js"></script>
 <script src="js/advanced.js"></script>
-<link href="../css/style.css" rel="stylesheet">
+
 <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
 
 
