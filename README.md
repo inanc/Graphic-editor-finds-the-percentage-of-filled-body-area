@@ -36,6 +36,15 @@ It uses RGBA color space for calculation.
                 } else {
                     notWhiteCount++
                 }
-            }   }
+            }
+        }
+```
+### Use with external image source
+Cross-Origin Resource Sharing (CORS) is default false in html2canvas.
+
+```javascript
+  html2canvas(document.querySelector(`#${currentBodyValue}Sketchpad`), {
+        useCORS: true
+    }).then(canvas => {
 ```
 
