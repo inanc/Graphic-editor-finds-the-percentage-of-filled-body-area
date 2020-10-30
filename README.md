@@ -1,18 +1,29 @@
-# The percentage of filled human body area
-A simple graphic editor that you can draw and you can get the percentage of filled area. It is specialised in the human body area.
+# A Graphic editor finds the percentage of filled body areas
+A simple graphic editor that you can draw and you can get the percentage of filled areas. It's specialised in the human body parts.
 
-It can use to calculating the percentage of burned human body area
+It can be used for calculating the percentage of a burned human body area and getting a screenshot.
 
 Based on : https://developers.sketchpad.pro
+
 ## Demo
 Try on:  https://codepen.io/inanccakil/pen/zYOrZaa
 
-## Usage
-It uses RGBA colour space for calculation.
+![Screenshot](./images/Screenshot.png?raw=true "Screenshot")
+
+## How to Use
+1.Choose a gender, body part and pen
+
+2.Draw an area
+
+3.Click the calculation button
+
+4.The calculation and screenshot will be displayed on the screen.
+
+## Calculation
+It uses an RGBA colour space for calculation.
 
 <img src="https://assets-global.website-files.com/55e67eeba2e73cb76514f165/59394737acbaea4fd061f9b3_07%20-%20RGBA.png" height="200"  />
 
-### Calculation
 
 ```javascript
         for (let i = 0; i < imageData.data.length; i += 4) {
@@ -29,7 +40,7 @@ It uses RGBA colour space for calculation.
                 if (imageData.data[i] > 215 && imageData.data[1 + i] > 215 && imageData.data[2 + i] > 215) {
 
                     /* Border color of the body image is rgb(220,220,220) (white-gray)
-                    Dont count body image border
+                    Do not count body image border
                     */
                 } else {
                     notWhiteCount++

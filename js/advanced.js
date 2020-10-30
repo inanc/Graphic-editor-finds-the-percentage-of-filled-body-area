@@ -2,11 +2,6 @@ var currentSize = 8;
 var currentTool = "pen";
 var currentColor = [234, 234, 33, 1];
 
-/**
- * Create new Sketchpad
- * @param  {string} imageLocation  - location of the background image
- *  {string} divId - id of the sketchpad div
- */
 function initSketchpad(imageLocation, divId) {
     "use strict";
     let sketchpad;
@@ -42,7 +37,7 @@ function initSketchpad(imageLocation, divId) {
      */
     function selectTool(toolId) {
         sketchpad.setTool(toolId);
-console.log("toolId",toolId)
+        console.log("toolId", toolId)
         document.querySelectorAll(".toolbar .button").forEach(function (el) {
             el.classList.remove("active");
         });
@@ -98,7 +93,6 @@ console.log("toolId",toolId)
                 document.getElementById("size").style.display = "block";
                 break;
         }
-
 
 
     }
@@ -251,7 +245,7 @@ function newObjectAdjustment(sketchpadObject) {
     // get current size ,tool and color and set the new object
     sketchpadObject.getCurrentTool().setSize(currentSize);
     sketchpadObject.setTool(currentTool);
-    document.getElementById("toolName").innerHTML = currentTool ;
+    document.getElementById("toolName").innerHTML = currentTool;
     document.getElementById("colorpaletteFillSection").style.display = "none";
     sketchpadObject.getCurrentTool().setColor(currentColor[0], currentColor[1], currentColor[2], currentColor[3]);
 }
@@ -261,32 +255,32 @@ function newObjectAdjustment(sketchpadObject) {
 $(document).on('change', 'input[type=radio][name=switch-body]', function () {
     if (this.value === 'frontBody') {
         if (!$.trim($('#frontBodySketchpad').html()).length) { // single object
-            newObjectAdjustment(initSketchpad(`${gender}.png`, "frontBodySketchpad")) // front
+            newObjectAdjustment(initSketchpad(`./images/${gender}.png`, "frontBodySketchpad")) // front
         }
         hideAllSketchpadExceptValue("frontBody");
     } else if (this.value === 'backBody') {
         if (!$.trim($('#backBodySketchpad').html()).length) {// if its empty create new one
-            newObjectAdjustment(initSketchpad(`${gender}-Back.png`, "backBodySketchpad")) // back
+            newObjectAdjustment(initSketchpad(`./images/${gender}-Back.png`, "backBodySketchpad")) // back
         }
         hideAllSketchpadExceptValue("backBody")
     } else if (this.value === 'frontHand') {
         if (!$.trim($('#frontHandSketchpad').html()).length) {
-            newObjectAdjustment(initSketchpad("Front-Hand.png", "frontHandSketchpad"))
+            newObjectAdjustment(initSketchpad("./images/Front-Hand.png", "frontHandSketchpad"))
         }
         hideAllSketchpadExceptValue("frontHand")
     } else if (this.value === 'backHand') {
         if (!$.trim($('#backHandSketchpad').html()).length) {
-            newObjectAdjustment(initSketchpad("Back-Hand.png", "backHandSketchpad"))
+            newObjectAdjustment(initSketchpad("./images/Back-Hand.png", "backHandSketchpad"))
         }
         hideAllSketchpadExceptValue("backHand")
     } else if (this.value === 'leftHead') {
         if (!$.trim($('#leftHeadSketchpad').html()).length) {
-            newObjectAdjustment(initSketchpad(`Face-${gender}-(Left).png`, "leftHeadSketchpad"))
+            newObjectAdjustment(initSketchpad(`./images/Face-${gender}-(Left).png`, "leftHeadSketchpad"))
         }
         hideAllSketchpadExceptValue("leftHead")
     } else if (this.value === 'rightHead') {
         if (!$.trim($('#rightHeadSketchpad').html()).length) {
-            newObjectAdjustment(initSketchpad(`Face-${gender}-(Right).png`, "rightHeadSketchpad"))
+            newObjectAdjustment(initSketchpad(`./images/Face-${gender}-(Right).png`, "rightHeadSketchpad"))
         }
         hideAllSketchpadExceptValue("rightHead")
     }
@@ -354,11 +348,11 @@ document.getElementById('tool-calculate').addEventListener("click", function () 
             } else { // KID
                 frontPercentage = (frontPercentage * 2.30).toFixed(1);// calculation
             }
-            document.querySelector("#frontOutput").innerHTML = "Body Front Percentage : " + frontPercentage;
+            document.querySelector("#frontOutput").innerHTML = '<b>Calculation=</b> Front Body Percentage : %' + frontPercentage;
             document.querySelector("#frontOutputInput").value = frontPercentage; // keep the value
             let back = parseFloat(document.getElementById("backOutputInput").value);
             back += parseFloat(frontPercentage);
-            document.querySelector("#bodySum").innerHTML = "Sum:" + (back).toFixed(1); // sum
+            document.querySelector("#bodySum").innerHTML = "All Body Sum: %" + (back).toFixed(1); // sum
 
         } else if (currentBodyValue === "backBody") {
             // back percentage 52
@@ -372,12 +366,12 @@ document.getElementById('tool-calculate').addEventListener("click", function () 
             }
 
 
-            document.querySelector("#backOutput").innerHTML = "Body Back Percentage : " + backPercentage + "";
+            document.querySelector("#backOutput").innerHTML = "Back Body Percentage : %" + backPercentage + "";
             document.querySelector("#backOutputInput").value = backPercentage;
 
             let front = parseFloat(document.getElementById("frontOutputInput").value);
             front = front + parseFloat(backPercentage);
-            document.querySelector("#bodySum").innerHTML = "Sum:" + front.toFixed(1)
+            document.querySelector("#bodySum").innerHTML = "All Body Sum: %" + front.toFixed(1)
 
         } else if (currentBodyValue === "frontHand") {
             let frontHandPercentage = ((notWhiteCount / (imageData.data.length / 4) * 100)).toFixed(1);
@@ -389,18 +383,18 @@ document.getElementById('tool-calculate').addEventListener("click", function () 
 
             let backhand = parseFloat(document.getElementById("backHandOutputInput").value);
             backhand = backhand + parseFloat(frontHandPercentage); // sum
-            document.querySelector("#handSum").innerHTML = "Sum:" + backhand.toFixed(1)
+            document.querySelector("#handSum").innerHTML = "All Sum:" + backhand.toFixed(1)
 
         } else if (currentBodyValue === "backHand") {
             // Man woman and kid are same calculation
-            let backhandPercentage = ((notWhiteCount / (imageData.data.length / 4) * 100) *4.73).toFixed(1);
+            let backhandPercentage = ((notWhiteCount / (imageData.data.length / 4) * 100) * 4.73).toFixed(1);
 
             document.querySelector("#backHandOutput").innerHTML = "Back Hand Percentage : " + backhandPercentage + "";
             document.querySelector("#backHandOutputInput").value = backhandPercentage;
 
             let fronthand = parseFloat(document.getElementById("frontHandOutputInput").value);
             fronthand = fronthand + parseFloat(backhandPercentage);
-            document.querySelector("#handSum").innerHTML = "Sum:" + fronthand.toFixed(1)
+            document.querySelector("#handSum").innerHTML = "All Sum:" + fronthand.toFixed(1)
 
         } else if (currentBodyValue === "leftHead") {
 
@@ -417,7 +411,7 @@ document.getElementById('tool-calculate').addEventListener("click", function () 
 
             let rightHead = parseFloat(document.getElementById("rightHeadOutputInput").value);
             rightHead = rightHead + parseFloat(leftHeadPercentage);
-            document.querySelector("#rightHeadSum").innerHTML = "Sum:" + rightHead.toFixed(1)
+            document.querySelector("#rightHeadSum").innerHTML = "All Sum: " + rightHead.toFixed(1)
 
         } else if (currentBodyValue === "rightHead") {
 
@@ -435,7 +429,7 @@ document.getElementById('tool-calculate').addEventListener("click", function () 
 
             let leftHead = parseFloat(document.getElementById("leftHeadOutputInput").value);
             leftHead = leftHead + parseFloat(rightHeadPercentage); // sum
-            document.querySelector("#rightHeadSum").innerHTML = "Sum:" + leftHead.toFixed(1)
+            document.querySelector("#rightHeadSum").innerHTML = "All Sum: " + leftHead.toFixed(1)
 
         }
         // come back to the before calculation scroll position
